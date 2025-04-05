@@ -19,10 +19,12 @@ class UsuariosModel extends Model {
 
     //Inserta nuevos usuarios
     public function insertUser($usuario = array()){
-        $query = "INSERT INTO usuario (nombre, apellido, telefono, correo, direccion, DUI, contra, id_tipo_usuario) 
-                  VALUES (:nombre, :apellido, :telefono, :correo, :direccion, :dui, SHA2(:contra,512), :tipo_usuario)";
+        $query = "INSERT INTO usuario 
+                  (nombre, apellido, telefono, correo, direccion, DUI, contra, id_tipo_usuario) 
+                  VALUES (:nombre, :apellido, :telefono, :correo, :direccion, :DUI, :contra, :id_tipo_usuario)"; //CORRECCION:Puse lo del SHA2-512 en el método controlador antes de llamar a insertUser
         return $this->set_query($query, $usuario);
     }
+    
 
 
     public function deleteUser($id = ''){
@@ -47,4 +49,11 @@ class UsuariosModel extends Model {
         // Llamamos a la función get_query pasando las variables
         return $this->get_query($query, ['correo' => $correo, 'contra' => $contra]);
     }
+
+
+    //Metodo para hacer la verificacion de la cuenta del usuario registrado
+    public function validateAccount($codigo) {
+      
+    }
+    
 }

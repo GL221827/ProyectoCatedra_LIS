@@ -12,16 +12,50 @@ class UsuariosController extends Controller{
 
    
     public function createUser(){
-        $this->render("newUser.php");
+        $this->render('newUser.php');
         //echo "<h1>Aqui se mostrara el fomulario para crear user</h1>";
     }
 
-    //Metodo para que el usuario verifique su cuenta
-    public function verifyAccount(){
-        $this->render("verifyUser.php");
-        //echo "<h1>Aqui se mostrara form para verificar cuenta</h1>";
+    
+
+    //Metodo para insertar usuarios en la BD y registrarlos
+    public function registerUser() {
+        
+        if (isset($_POST)) {
+    
+            $viewBag=array();// almacena el mensaje de error si el registro falla.
+
+            $usuario['nombre']= $_POST['nombre'];
+            $usuario['apellido']= $_POST['apellido'];
+            $usuario['telefono']= $_POST['telefono'];
+            $usuario['correo']= $_POST['correo'];
+            $usuario['direccion']= $_POST['direccion'];
+            $usuario['DUI']= $_POST['DUI'];
+            $usuario['contra']= hash('sha512', $_POST['contra']); // se hashea aqui la contraseña para que cuando la ingrese se encripte en la base
+            $usuario['id_tipo_usuario'] = 1; //Por default todos los usuarios que se registren por el momento seran tipo 1 o sea "Clientes" con acceso a la interfaz publica
+    
+
+
+            $resultado = $this->model->insertUser($usuario);
+
+            //con la variable definida arriba se verifica que los campos no esten vacios, y se redirecciona a la pagina para verificar la cuenta
+            if(empty($resultado)){
+                $viewBag['error']='Debe de llenar todos los campos';
+                $this->render('newUser.php',$viewBag);
+            }
+            else{
+                $this->render("verifyUser.php");
+            }
+           
+         }
     }
 
+
+    //Metodo para que el usuario verifique su cuenta
+    public function verifyAccount(){
+        $this->render('verifyUser.php')
+    }
+    
 
     //Metodo para abrir el formulario de login
     public function login(){
@@ -56,27 +90,9 @@ class UsuariosController extends Controller{
 
     }
 
-//Metodo de prueba para insertar usuarios en la BD
-    public function insert(){
-        
 
-       if(isset($_POST)){
-        
-        $usuario['Nombre']=$_POST['Nombre'];
-        $usuario['Apellido']=$_POST['Apellido'];
-        $usuario['Telefono']=$_POST['Telefono'];
-        $usuario['Correo']=$_POST['Correo'];
-        $usuario['Direccion']=$_POST['Direccion'];
-        $usuario['DUI']=$_POST['DUI'];
-        $usuario['Contrasena']=$_POST['Contrasena'];
-       
-        
-        echo $this->model->insert($usuario);
-
-       }
-       
-        var_dump($usuario);
 
         
-    }
+    
+
 }

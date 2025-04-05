@@ -4,7 +4,7 @@ include_once 'Controllers/IndexController.php';
 include_once 'Controllers/UsuariosController.php';
 include_once 'Controllers/CuponesController.php';
 
-const PATH= '/Proyecto1_LIS';
+const PATH= '/ProyectoCatedra_LIS';
 //iniciando sesion de php
 session_start();
 

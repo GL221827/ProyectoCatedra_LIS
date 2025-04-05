@@ -17,41 +17,43 @@
     
 
 
-                <form role="form" action="<?= PATH?>/insert" method="POST">
+                <form role="form" action="<?= PATH.'/Usuarios/registerUser'?>" method="POST">
                 <input type="hidden" name="op" value="insertar"/>
                     <div class="mb-3">
-                        <label for="nombres" class="form-label">Nombres</label>
-                        <input type="text" class="form-control" name="Nombre" id="Nombre" placeholder="Ingrese sus nombres">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingrese sus nombres">
                     </div>
                     <div class="mb-3">
-                        <label for="apellidos" class="form-label">Apellidos:</label>
-                        <input type="text" class="form-control" name="Apellido" id="Apellido" placeholder="Ingresa sus apellidos">
+                        <label for="apellido" class="form-label">Apellido:</label>
+                        <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Ingresa sus apellidos">
                     </div>
                     <div class="mb-3">
                         <label for="telefono" class="form-label">Telefono:</label>
-                        <input type="tel" class="form-control" id="Telefono" name="Telefono" placeholder="Ingresa su numero de telefono">
+                        <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Ingresa su numero de telefono">
                     </div>
                     <div class="mb-3">
                         <label for="correo" class="form-label">Correo Electronico:</label>
-                        <input type="text" class="form-control" id="Correo" name="Correo" placeholder="Ingresa su correo electronico">
+                        <input type="text" class="form-control" id="correo" name="correo" placeholder="Ingresa su correo electronico">
                     </div>
                     <div class="mb-3">
                         <label for="direccion" class="form-label">Direccion:</label>
-                        <input type="text" class="form-control" id="Direccion" name="Direccion" placeholder="Ingresa su direccion">
+                        <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Ingresa su direccion">
                     </div>
                     <div class="mb-3">
                         <label for="DUI" class="form-label">DUI:</label>
                         <input type="text" class="form-control" id="DUI" name="DUI" placeholder="Ingrese su numero de DUI">
                     </div>
                     <div class="mb-3">
-                        <label for="contraseña" class="form-label">Contraseña:</label>
-                        <input type="text" class="form-control" id="Contrasena" name="Contrasena" placeholder="Ingrese su contraseña">
+                        <label for="contra" class="form-label">Contraseña:</label>
+                        <input type="text" class="form-control" id="contra" name="contra" placeholder="Ingrese su contraseña">
                     </div>
                    
                     <button type="submit" class="btn btn-primary">Registrarse</button>
                     <a class="btn btn-danger" href="#">Cancelar</a>
 
                 </form>
+     
+
             </div>
 
         </div>

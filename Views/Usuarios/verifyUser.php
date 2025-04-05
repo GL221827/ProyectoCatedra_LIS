@@ -14,7 +14,7 @@
 
         <div class="row">
             <div class="col-md-7">
-                <form role="form" action="#" method="POST">
+                <form role="form" action="<?=PATH.'/Usuarios/verifyAccount'?>" method="POST">
                 <input type="hidden" name="op" value="insertar"/>
                 <h3>Ingrese el codigo de verificacion enviado a su correo electronico</h3>
                     
